@@ -4,48 +4,40 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ## 1. What was broken when you started?
 
-- What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
+- The hints were backwards
+- The score at the end seemed unreasonable
+- When I went over 100 or below 1, there was no out-of-bounds
 
 **Bug Reproduction Log**
 
 Document at least 3 bugs you found. Add rows as needed.
 
-| Input | Expected Behavior | Actual Behavior | Console Output / Error |
-|-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
-| | | | |
+| Input |   Expected Behavior   | Actual Behavior | Console Output / Error |
+|-------|-----------------------|-----------------|------------------------|
+|  101  | Number out-of-bounds  |    Go Lower     | Line 36                |
+|   1   |        Go Lower       |    Go Higher    | Line 45                |
+|  100  |       Go Higher       |    Go Lower     | Line 45                |
 
 ---
 
 ## 2. How did you use AI as a teammate?
 
-- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
-- Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
-- Give one example of an AI suggestion you did not accept as written (including what the AI suggested, why you rejected or changed it, and how you verified your version). It does not have to be a suggestion that was wrong: over-engineered, out of scope, harder to read, or a poor fit for this codebase all count.
+I used Claude Code as a teammate for this project. The suggestions that it gave were all valid and used to fix bugs. They were also used to fix bugs that were discovered after fixing the inital bugs in the Bug Reproduction Log.
 
 ---
 
 ## 3. Debugging and testing your fixes
 
-- How did you decide whether a bug was really fixed?
-- Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code.
-- Did AI help you design or understand any tests? How?
+I ran tests both manually and using pytest. All of the tests in test/test_game_logic.py were designed by Claude Code. By doing these, I was able to determine whether a feature was a bug or not. It also helped me determine whether the bugs were fixed to run as intended.
 
 ---
 
 ## 4. What did you learn about Streamlit and state?
 
-- How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+I would explaim Streamlit as a way to view Python web applications. Similar to livestreams for HTML and npm for JSX. State gives us updates on the web app's status such as updates and errors.
 
 ---
 
 ## 5. Looking ahead: your developer habits
 
-- What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
-- What is one thing you would do differently next time you work with AI on a coding task?
-- In one or two sentences, describe how this project changed the way you think about AI generated code.
+One habit from this project that I want to reuse for future labs or projects is by adding comments on sections with descriptions of bugs and how they were fixed. One thing I would do differently is to list all of the discovered bugs in one go so that Claude can explain them to me in one session and make connections between the bugs if appliciable. This project helped me see how useful AI generated code can be to save me time, but I should still stay cautious when accepting changes.

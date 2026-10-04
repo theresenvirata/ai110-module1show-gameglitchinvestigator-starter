@@ -25,30 +25,48 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
-
+- [X] Describe the game's purpose.
+The purpose of this game is to guess the secret number. There are three modes, Easy, Normal, and Hard, each with different number of guesses and a range that the secret number can be. Whenever the user input's a guess, they are given a message to go higher, go lower, to input a number that is within the specified range, or a message saying they won the game.
+- [X] Detail which bugs you found.
+   1. UI and random number generator does not update with the difficlties being choosen.
+   2. Hints were misguiding and led you to lose the game.
+   3. Guesses had no range check and were casted as strings for even attempts.
+   4. Invalid or out-of-range guesses used up an attempt.
+   5. Clicking "New Game" Did not reset status so the guessing messaged continued to display after a win or loss.
+- [X] Explain what fixes you applied.
+   1. Updated UI and random number generator based on difficulty.
+   2. Fixed the hints system
+   3. Fix check_guesses to no longer parse guesses as strings and check if the guess is in valid range
+   4. Fixed guess stack for every "New Game"
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. User enters a guess of 40
+2. Game returns "Too Low"
+3. User enters a guess of 70, and the game shows "Too High"
+4. Score updates correctly after each guess
+5. Game ends after the correct guess
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
 ## 🧪 Test Results
+![Winning screen](winning-screen.png)
 
 ```
 # Paste your pytest output here, e.g.:
 # pytest tests/
 # ========================= X passed in 0.XXs =========================
+.\.venv\Scripts\python.exe -m pytest 
+============================================================= test session starts ==============================================================
+platform win32 -- Python 3.14.8, pytest-9.1.1, pluggy-1.6.0
+rootdir: C:\Users\there\OneDrive\Documents\Visual Studio Code\ai110-module1show-gameglitchinvestigator-starter
+configfile: pytest.ini
+testpaths: test
+plugins: anyio-4.15.1
+collected 35 items                                                                                                                              
+
+test\test_game_logic.py ...................................                                                                               [100%]
+
+============================================================== 35 passed in 2.08s ==============================================================
 ```
-
-## 🚀 Stretch Features
-
-- [ ] [If you choose to complete Challenge 4, describe the Enhanced UI changes here — a screenshot is optional]
